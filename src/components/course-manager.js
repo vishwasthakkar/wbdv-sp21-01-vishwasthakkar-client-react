@@ -8,6 +8,7 @@ import "./course-list.style.client.css";
 export default class CourseManager
     extends React.Component {
     state = {
+        title: '',
         courses: []
     };
 
@@ -44,7 +45,7 @@ export default class CourseManager
 
     addCourse = () => {
         const newCourse = {
-            title: "New Course",
+            title: this.state.title,
             owner: "me",
             lastModified: "2/10/2021"
         };
@@ -58,7 +59,8 @@ export default class CourseManager
     render() {
         return(
             <div>
-                <div className="wbdv-sticky-top"  style={{marginTop: '10px'}}>
+                <div className="wbdv-sticky-top"
+                     style={{ backgroundColor: "cornflowerblue", padding: "10px"}}>
                     <div className="row">
                         <div className="col-1 ml-4">
                             <i className="fa fa-bars fa-lg"></i>
@@ -69,7 +71,9 @@ export default class CourseManager
                             </h4>
                         </div>
                         <div className="col col-lg-7">
-                            <input className="form-control" placeholder="New Course Title"/>
+                            <input className="form-control"
+                                   onChange={event => this.setState({title: event.target.value})}
+                                   placeholder="New Course Title"/>
                         </div>
                         <div className="col-1 mr-4 ml-lg-4">
                             <button type="button"
@@ -86,14 +90,6 @@ export default class CourseManager
                         onClick={this.addCourse}>
                     <i className="fa fa-plus" aria-hidden="true"></i>
                 </button>
-
-                {/*<Link to="/">*/}
-                    {/*<i className="fas fa-2x fa-home float-right"></i>*/}
-                {/*</Link>*/}
-                {/*<h1>Course Manager</h1>*/}
-                {/*<button onClick={this.addCourse}>*/}
-                    {/*Add Course*/}
-                {/*</button>*/}
 
                 <Route path={['/courses', '/courses/table']} exact={true} >
                     <CourseTable

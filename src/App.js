@@ -10,7 +10,7 @@ import Home from "./components/home";
 function App() {
   return (
       <BrowserRouter>
-        <div className="container-fluid">
+        <div>
           <Route path="/" exact={true}  component={Home}/>
           <Route path="/courses" component={CourseManager}/>
           {/*<Route path="/courses/table" component={CourseTable}/>*/}
