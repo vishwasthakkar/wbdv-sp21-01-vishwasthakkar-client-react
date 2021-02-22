@@ -1,46 +1,53 @@
-function CourseService() {
-    this.createCourse = createCourse;
-    this.findAllCourses = findAllCourses;
-    this.deleteCourse = deleteCourse;
-    this.updateCourse = updateCourse;
-    // this.findUserById = findUserById;
+const COURSES_URL  = 'https://wbdv-generic-server.herokuapp.com/api/001380619/courses';
 
-    this.url = 'https://wbdv-generic-server.herokuapp.com/api/001380619/courses';
-    var self = this;
+export const createCourse = (course) => {
+    return fetch(COURSES_URL, {
+        method: 'POST',
+        body: JSON.stringify(course),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(function(response){
+        return response.json()
+    })
+};
 
-    function createCourse(course) {
-        return fetch(self.url, {
-            method: 'POST',
-            body: JSON.stringify(course),
-            headers: {
-                'content-type': 'application/json'
-            }
-        }).then(function(response){
-            return response.json()
+export const findAllCourses =() => {
+    return fetch(COURSES_URL)
+        .then(function (response) {
+            return response.json();
         })
-    }
+};
 
-    function findAllCourses() {
-        return fetch(self.url)
-            .then(function (response) {
-                return response.json();
-            })
-    }
+export const updateCourse = (courseId, course) => {
+    return fetch(`${COURSES_URL}/${courseId}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(course)
+    }).then(response => response.json())
+};
 
-    function deleteCourse(courseId, course) {
-        return fetch(`${self.url}/${courseId}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(course)
-        }).then(response => response.json())
-    }
+export const deleteCourse = (courseId) => {
+    return fetch(`${COURSES_URL}/${courseId}`,
+                 {method: 'DELETE'})
+};
 
-    function updateCourse(courseId) {
-        return fetch(`${self.url}/${courseId}`,
-                     {method: 'DELETE'})
-    }
+// FIXME: Try to return the retrieved course
+export const findCourseById = (courseId) => {
+    fetch(`${COURSES_URL}/${courseId}`,{
+        method: 'GET'
+    })
+        .then(response => response.json())
+};
 
-    //     function findUserById(userId) { … }
+export default {
+    createCourse,
+    findAllCourses,
+    findCourseById,
+    updateCourse,
+    deleteCourse
 }
+
+

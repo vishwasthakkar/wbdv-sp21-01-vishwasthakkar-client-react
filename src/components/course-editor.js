@@ -11,7 +11,7 @@ const CourseEditor = ({history}) =>
                         &nbsp;
                     </i>
                 </a>
-                <a className="navbar-brand nav-icon-margins"
+                <a className="navbar-brand nav-icon-margins mr-4"
                    href="#">CS5610 - WebDev
                 </a>
                 <ul className="navbar-nav">

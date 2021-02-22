@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 
 export default () =>
-    <>
+    <div className="container">
         <h1>Home</h1>
         <div className="list-group">
             <Link to="/courses/table" className="list-group-item">
@@ -16,4 +16,4 @@ export default () =>
                 Course Editor
             </Link>
         </div>
-    </>
+    </div>
