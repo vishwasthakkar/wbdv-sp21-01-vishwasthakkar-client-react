@@ -30,13 +30,57 @@ const CourseCard = ({
                     src="https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png"
                     className="card-img-top" alt="..."/>
                 <div className="card-body">
-                    <h5 className="card-title">{course.title}</h5>
+
+                    {
+                        !editing &&
+                        <span>
+                            {/*<a href="#"><i className="fa fa-file">*/}
+                                {/*&nbsp;*/}
+                            {/*</i></a>*/}
+                            {/*<h5 className="card-title">{course.title}</h5>*/}
+
+                            <Link to="/editor">
+                                <h5 className="card-title">{course.title}</h5>
+                            </Link>
+                        </span>
+                    }
+                    {
+                        editing &&
+                        <input
+                            className="form-control"
+                            onChange={(e) => setTitle(e.target.value)}
+                            value={title}/>
+                    }
                     <p className="card-text">
                         Some Description
                     </p>
                     <Link to="/editor" className="btn btn-primary">
                         {course.title}
                     </Link>
+                    <span>
+                        {
+                            editing &&
+                            <span  className="float-right">
+                                <i onClick={() => deleteCourse(course)}
+                                   className="fas fa-trash fa-md">
+                                    &nbsp;
+                                </i>
+                                <i onClick={() => saveCourse()}
+                                   className="fas fa-check fa-md">
+                                    &nbsp;
+                                </i>
+                            </span>
+
+                        }
+                        {
+                            !editing &&
+                            <span  className="float-right">
+                            <i onClick={() => setEditing(true)} className="fas fa-edit fa-md p-1">
+                                &nbsp;
+                            </i>
+                        </span>
+                        }
+                    </span>
                 </div>
             </div>
         </div>

@@ -67,7 +67,6 @@ const CourseRow = (
                         </span>
 
                     }
-
                     {
                         !editing &&
                         <span  className="float-right">
