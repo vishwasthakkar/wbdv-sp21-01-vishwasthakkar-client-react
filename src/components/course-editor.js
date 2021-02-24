@@ -43,76 +43,74 @@ const CourseEditor = ({history}) =>
             </div>
         </nav>
 
-        <div className="container">
+        {/*<div className="container">*/}
 
-            <div className="row">
-                <div className="col-4">
+            {/*<div className="row">*/}
+                {/*<div className="col-4">*/}
 
-                    <ul className="list-group"
-                        style={{backgroundColor: '#2c2c2c', paddingBottom: '300px'}}>
-                        <li className="list-group-item active list-padding-top list-group-item-dark">
-                            Module 1 - jQuery
-                            <i className="pull-right fa fa-times fa-lg"></i>
-                        </li>
-                        <li className="list-group-item list-padding list-group-item-dark">
-                            Module 2 - React
-                            <i className="pull-right fa fa-times fa-lg"></i>
-                        </li>
-                        <li className="list-group-item list-padding list-group-item-dark">
-                            Module 3 - Redux
-                            <i className="pull-right fa fa-times fa-lg"></i>
-                        </li>
-                        <li className="list-group-item list-padding list-group-item-dark">
-                            Module 4 - Native
-                            <i className="pull-right fa fa-times fa-lg"></i>
-                        </li>
-                        <li className="list-group-item list-padding list-group-item-dark">
-                            Module 5 - Angular
-                            <i className="pull-right fa fa-times fa-lg"></i>
-                        </li>
-                        <li className="list-group-item list-padding list-group-item-dark">
-                            Module 6 - Node
-                            <i className="pull-right fa fa-times fa-lg"></i>
-                        </li>
-                        <li className="list-group-item list-padding list-group-item-dark">
-                            Module 7 - Mango
-                            <i className="pull-right fa fa-times fa-lg"></i>
-                        </li>
-                        <li className="list-group-item list-padding list-group-item-dark text-center">
-                            <i className="fa fa-plus fa-lg"></i>
-                        </li>
+                    {/*<ul className="list-group"*/}
+                        {/*style={{backgroundColor: '#2c2c2c', paddingBottom: '300px'}}>*/}
+                        {/*<li className="list-group-item active list-padding-top list-group-item-dark">*/}
+                            {/*Module 1 - jQuery*/}
+                            {/*<i className="pull-right fa fa-times fa-lg"></i>*/}
+                        {/*</li>*/}
+                        {/*<li className="list-group-item list-padding list-group-item-dark">*/}
+                            {/*Module 2 - React*/}
+                            {/*<i className="pull-right fa fa-times fa-lg"></i>*/}
+                        {/*</li>*/}
+                        {/*<li className="list-group-item list-padding list-group-item-dark">*/}
+                            {/*Module 3 - Redux*/}
+                            {/*<i className="pull-right fa fa-times fa-lg"></i>*/}
+                        {/*</li>*/}
+                        {/*<li className="list-group-item list-padding list-group-item-dark">*/}
+                            {/*Module 4 - Native*/}
+                            {/*<i className="pull-right fa fa-times fa-lg"></i>*/}
+                        {/*</li>*/}
+                        {/*<li className="list-group-item list-padding list-group-item-dark">*/}
+                            {/*Module 5 - Angular*/}
+                            {/*<i className="pull-right fa fa-times fa-lg"></i>*/}
+                        {/*</li>*/}
+                        {/*<li className="list-group-item list-padding list-group-item-dark">*/}
+                            {/*Module 6 - Node*/}
+                            {/*<i className="pull-right fa fa-times fa-lg"></i>*/}
+                        {/*</li>*/}
+                        {/*<li className="list-group-item list-padding list-group-item-dark">*/}
+                            {/*Module 7 - Mango*/}
+                            {/*<i className="pull-right fa fa-times fa-lg"></i>*/}
+                        {/*</li>*/}
+                        {/*<li className="list-group-item list-padding list-group-item-dark text-center">*/}
+                            {/*<i className="fa fa-plus fa-lg"></i>*/}
+                        {/*</li>*/}
 
-                    </ul>
+                    {/*</ul>*/}
 
-                </div>
-                <div className="col-8">
-
-
-                    <ul className="nav nav-pills">
-                        <li className="nav-item ">
-                            <a href="#" className="badge badge-secondary">Topic 1</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#" className="badge badge-dark">Topic 2</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#" className="badge badge-secondary">Topic 3</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#" className="badge badge-secondary">Topic 4</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="badge badge-secondary" href="#">
-                                <i className="fa fa-plus"></i>
-                            </a>
-                        </li>
-                    </ul>
+                {/*</div>*/}
+                {/*<div className="col-8">*/}
 
 
-                </div>
-            </div>
-        </div>
+                    {/*<ul className="nav nav-pills">*/}
+                        {/*<li className="nav-item ">*/}
+                            {/*<a href="#" className="badge badge-secondary">Topic 1</a>*/}
+                        {/*</li>*/}
+                        {/*<li className="nav-item">*/}
+                            {/*<a href="#" className="badge badge-dark">Topic 2</a>*/}
+                        {/*</li>*/}
+                        {/*<li className="nav-item">*/}
+                            {/*<a href="#" className="badge badge-secondary">Topic 3</a>*/}
+                        {/*</li>*/}
+                        {/*<li className="nav-item">*/}
+                            {/*<a href="#" className="badge badge-secondary">Topic 4</a>*/}
+                        {/*</li>*/}
+                        {/*<li className="nav-item">*/}
+                            {/*<a className="badge badge-secondary" href="#">*/}
+                                {/*<i className="fa fa-plus"></i>*/}
+                            {/*</a>*/}
+                        {/*</li>*/}
+                    {/*</ul>*/}
 
+                {/*</div>*/}
+            {/*</div>*/}
+        {/*</div>*/}
     </div>;
 
 export default CourseEditor;

@@ -11,11 +11,11 @@ export default class CourseTable extends
 
     render() {
         return(
-            <div className="container">
+            <div className="container-fluid">
                 <table className="table">
                     <thead>
                         <tr>
-                            <th className="d-table-cell">
+                            <th>
                                 Title
                             </th>
                             <th className="d-none d-md-table-cell">
@@ -25,12 +25,14 @@ export default class CourseTable extends
                             <th className="d-none d-lg-table-cell">
                                 Last modified
                             </th>
-                            <th className="d-block right-fixed">
-                                <i className="fas fa-folder fa-lg mr-3"></i>
-                                <i className="fas fa-sort-alpha-up-alt fa-lg mr-3"></i>
-                                <Link to="/courses/grid">
-                                    <i className="fa fa-th fa-lg mr-3"></i>
-                                </Link>
+                            <th>
+                                <span className="float-right">
+                                    <i className="fas fa-folder fa-lg mr-3"></i>
+                                    <i className="fas fa-sort-alpha-up-alt fa-lg mr-3"></i>
+                                    <Link to="/courses/grid">
+                                        <i className="fa fa-th fa-lg mr-3"></i>
+                                    </Link>
+                                </span>
                             </th>
                         </tr>
                     </thead>

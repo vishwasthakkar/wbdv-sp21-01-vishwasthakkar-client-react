@@ -7,8 +7,8 @@ const CourseRow = (
         course,
         lastModified="1/1/2021",
         owner="who knows?",
-        deleteCourse,
-        updateCourse
+        updateCourse,
+        deleteCourse
     }) => {
 
     const [editing, setEditing] = useState(false);
@@ -25,14 +25,17 @@ const CourseRow = (
 
     return(
         <tr className="course">
-            <td className="d-table-cell">
-                <a href="#"><i className="fa fa-file">&nbsp;</i></a>
-                &nbsp;
+            <td className="d-table-cell" style={{width: "50%"}}>
                 {
                     !editing &&
-                    <Link to="/editor">
-                        {course.title}
-                    </Link>
+                    <span>
+                        <a href="#"><i className="fa fa-file">
+                            &nbsp;
+                        </i></a>
+                        <Link to="/editor">
+                            {course.title}
+                        </Link>
+                    </span>
                 }
                 {
                     editing &&
@@ -49,19 +52,31 @@ const CourseRow = (
                 {course.lastModified}
             </td>
             <td  className="d-table-cell">
-                <span className="pl-5">
-                    <i onClick={() => deleteCourse(course)} className="fas fa-trash fa-md p-1"></i>
+                <span>
                     {
                         editing &&
-                        <i onClick={() => saveCourse()} className="fas fa-check fa-md p-1"></i>
+                        <span  className="float-right">
+                            <i onClick={() => deleteCourse(course)}
+                               className="fas fa-trash fa-md">
+                                &nbsp;
+                            </i>
+                            <i onClick={() => saveCourse()}
+                               className="fas fa-check fa-md">
+                                &nbsp;
+                            </i>
+                        </span>
+
                     }
 
                     {
                         !editing &&
-                        <i onClick={() => setEditing(true)} className="fas fa-edit fa-md p-1"></i>
+                        <span  className="float-right">
+                            <i onClick={() => setEditing(true)} className="fas fa-edit fa-md p-1">
+                                &nbsp;
+                            </i>
+                        </span>
                     }
                 </span>
-
             </td>
         </tr>)
 };

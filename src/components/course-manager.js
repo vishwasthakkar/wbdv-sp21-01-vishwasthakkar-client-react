@@ -54,6 +54,7 @@ export default class CourseManager
                 this.state.courses.push(actualCourse)
                 this.setState(this.state)
             })
+        document.getElementById("courseInput").value = "";
     };
 
     render() {
@@ -63,7 +64,7 @@ export default class CourseManager
                      style={{ backgroundColor: "cornflowerblue", padding: "10px"}}>
                     <div className="row">
                         <div className="col-1 ml-4">
-                            <i className="fa fa-bars fa-lg"></i>
+                            <i className="fa fa-bars fa-lg">&nbsp;</i>
                         </div>
                         <div className="col-2 d-none d-lg-block">
                             <h4>
@@ -72,6 +73,7 @@ export default class CourseManager
                         </div>
                         <div className="col col-lg-7">
                             <input className="form-control"
+                                   id="courseInput"
                                    onChange={event => this.setState({title: event.target.value})}
                                    placeholder="New Course Title"/>
                         </div>
@@ -79,7 +81,7 @@ export default class CourseManager
                             <button type="button"
                                     className="btn btn-danger skeleton-add-button"
                                     onClick={this.addCourse}>
-                                <i className="fa fa-plus" aria-hidden="true"></i>
+                                <i className="fa fa-plus" aria-hidden="true">&nbsp;</i>
                             </button>
                         </div>
                     </div>
@@ -88,7 +90,7 @@ export default class CourseManager
                 <button type="button"
                         className="btn btn-danger btn-circle-float wbdv-sticky-bottom"
                         onClick={this.addCourse}>
-                    <i className="fa fa-plus" aria-hidden="true"></i>
+                    <i className="fa fa-plus" aria-hidden="true">&nbsp;</i>
                 </button>
 
                 <Route path={['/courses', '/courses/table']} exact={true} >
@@ -97,12 +99,14 @@ export default class CourseManager
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
-                {/*<Route path="/courses/grid" component={CourseGrid}/>*/}
+
                 <Route path="/courses/grid" exact={true} >
-                    <CourseGrid courses={this.state.courses}/>
+                    <CourseGrid
+                        updateCourse={this.updateCourse}
+                        deleteCourse={this.deleteCourse}
+                        courses={this.state.courses}/>
                 </Route>
-                {/*<CourseTable courses={this.state.courses}/>*/}
-                {/*<CourseGrid courses={this.state.courses}/>*/}
+
             </div>
         )
     }
