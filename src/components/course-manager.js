@@ -1,9 +1,9 @@
 import React from 'react';
-import CourseTable from "./course-table";
-import CourseGrid from "./course-grid";
+import CourseTable from "./course-table/course-table";
+import CourseGrid from "./course-grid/course-grid";
 import {Link, Route} from "react-router-dom";
 import courseService from "../services/course-service";
-import "./course-list.style.client.css";
+import "./course-table/course-list.style.client.css";
 
 export default class CourseManager
     extends React.Component {

@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter, Route} from "react-router-dom";
-import CourseEditor from "./components/course-editor";
+import CourseEditor from "./components/course-editor/course-editor";
 import CourseManager from "./components/course-manager";
 import Home from "./components/home";
 
