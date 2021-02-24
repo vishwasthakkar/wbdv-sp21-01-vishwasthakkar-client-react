@@ -44,7 +44,7 @@ const CourseRow = (
                         value={title}/>
                 }
             </td>
-            <td className="d-none d-md-table-cell">
+            <td className="d-none d-sm-table-cell">
                 {course.owner}
             </td>
             <td className="d-none d-lg-table-cell">

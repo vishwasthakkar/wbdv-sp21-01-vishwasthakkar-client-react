@@ -18,7 +18,7 @@ export default class CourseTable extends
                             <th>
                                 Title
                             </th>
-                            <th className="d-none d-md-table-cell">
+                            <th className="d-none d-sm-table-cell">
                                 Owned by
                                 <i className="fa fa-sort-down"></i>
                             </th>

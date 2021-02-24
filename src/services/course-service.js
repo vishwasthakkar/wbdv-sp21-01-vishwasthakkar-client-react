@@ -7,16 +7,13 @@ export const createCourse = (course) => {
         headers: {
             'content-type': 'application/json'
         }
-    }).then(function(response){
-        return response.json()
     })
+        .then(response => response.json())
 };
 
-export const findAllCourses =() => {
+export const findAllCourses = () => {
     return fetch(COURSES_URL)
-        .then(function (response) {
-            return response.json();
-        })
+        .then(response => response.json())
 };
 
 export const updateCourse = (courseId, course) => {
@@ -26,15 +23,16 @@ export const updateCourse = (courseId, course) => {
             'content-type': 'application/json'
         },
         body: JSON.stringify(course)
-    }).then(response => response.json())
+    })
+        .then(response => response.json())
 };
 
 export const deleteCourse = (courseId) => {
     return fetch(`${COURSES_URL}/${courseId}`,
                  {method: 'DELETE'})
+        .then(response => response.json())
 };
 
-// FIXME: Try to return the retrieved course
 export const findCourseById = (courseId) => {
     fetch(`${COURSES_URL}/${courseId}`,{
         method: 'GET'
