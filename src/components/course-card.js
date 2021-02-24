@@ -39,9 +39,9 @@ const CourseCard = ({
                             {/*</i></a>*/}
                             {/*<h5 className="card-title">{course.title}</h5>*/}
 
-                            <Link to="/editor">
-                                <h5 className="card-title">{course.title}</h5>
-                            </Link>
+                            {/*<Link to="/editor">*/}
+                                <h5 className="card-title">{title}</h5>
+                            {/*</Link>*/}
                         </span>
                     }
                     {
