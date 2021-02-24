@@ -1,12 +1,11 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import CourseCard from "./course-card";
-import {updateCourse} from "../services/course-service";
 
 const CourseGrid = (
     {
         courses,
-        saveCourse,
+        updateCourse,
         deleteCourse
     }) =>
     <div className="container-fluid">

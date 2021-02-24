@@ -40,7 +40,7 @@ const CourseCard = ({
                             {/*<h5 className="card-title">{course.title}</h5>*/}
 
                             {/*<Link to="/editor">*/}
-                                <h5 className="card-title">{title}</h5>
+                                <h5 className="card-title">{course.title}</h5>
                             {/*</Link>*/}
                         </span>
                     }
@@ -61,7 +61,10 @@ const CourseCard = ({
                         {
                             editing &&
                             <span  className="float-right">
-                                <i onClick={() => deleteCourse(course)}
+                                <i onClick={() => {
+                                    setEditing(false);
+                                    deleteCourse(course);
+                                }}
                                    className="fas fa-trash fa-md">
                                     &nbsp;
                                 </i>
