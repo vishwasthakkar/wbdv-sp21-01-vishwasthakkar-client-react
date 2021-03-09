@@ -6,6 +6,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {findAllCourses, deleteCourse} from './services/course-service'
+
+let courses = deleteCourse();
+// alert(`The Length of courses: ${courses.length}`);
+
 ReactDOM.render(
     <App />,
     document.getElementById('root')

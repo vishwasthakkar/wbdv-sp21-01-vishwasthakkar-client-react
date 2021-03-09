@@ -42,7 +42,8 @@ const EditableItem = (
                     }} className="fas fa-check float-right">
                         &nbsp;
                     </i>
-                    <i onClick={() => deleteItem(item)} className="fas fa-times float-right pr-3">
+                    <i onClick={() => deleteItem(item)}
+                       className="fas fa-times float-right">
                         &nbsp;
                     </i>
                 </>

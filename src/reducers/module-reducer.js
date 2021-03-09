@@ -6,7 +6,40 @@ const initialState = {
 };
 
 const ModuleReducer = (state=initialState, action) => {
-    return state;
+    switch (action.type) {
+        case "CREATE_MODULE":
+            return {
+                modules: [
+                    ...state.modules,
+                    {
+                        // FIXME remove hard-codded ID
+                        _id: (new Date()).getTime(),
+                        title: "New Module"
+                    }
+                ]
+            };
+
+        case "DELETE_MODULE":
+            return {
+                modules: state.modules.filter(
+                    module => module._id !== action.module._id)
+            };
+
+        case "UPDATE_MODULE":
+            return {
+                modules: state.modules.map(module=>{
+                    if(module._id === action.module._id){
+                        return action.module;
+                    } else {
+                        return module;
+                    }
+                })
+            };
+
+        default:
+            return state;
+
+    }
     // switch (action.type) {
     //
     //     case "FIND_MODULES_FOR_COURSE":

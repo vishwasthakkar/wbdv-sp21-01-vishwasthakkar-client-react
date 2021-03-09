@@ -1,7 +1,13 @@
 import React from 'react';
 import {connect} from "react-redux";
+import EditableItem from "../editable-item";
 
-const ModuleList = ({modules=[]}) =>
+const ModuleList = ({
+    modules = [],
+    createModule,
+    deleteModule,
+    updateModule
+}) =>
     <div>
         <h2>Module List {modules.length}</h2>
         <ul className="list-group">
@@ -9,10 +15,10 @@ const ModuleList = ({modules=[]}) =>
                 modules.map(module => {
                     return (
                         <li className="list-group-item">
-                            {module.title}
-                            <i className="fas fa-times fa-lg float-right">
-                                &nbsp;
-                            </i>
+                            <EditableItem item = {module}
+                                          deleteItem={deleteModule}
+                                          updateItem={updateModule}
+                            />
                         </li>
                     )
                 })
@@ -52,11 +58,11 @@ const ModuleList = ({modules=[]}) =>
                     {/*&nbsp;*/}
                 {/*</i>*/}
             {/*</li>*/}
-            {/*<li className="list-group-item text-center">*/}
-                {/*<i className="fas fa-plus fa-lg">*/}
-                    {/*&nbsp;*/}
-                {/*</i>*/}
-            {/*</li>*/}
+            <li  onClick={createModule} className="list-group-item text-center">
+                <i className="fas fa-plus fa-lg">
+                    &nbsp;
+                </i>
+            </li>
         </ul>
     </div>;
 
@@ -67,7 +73,21 @@ const stateToPropertyMapper = (state) => {
 };
 
 const dispatchToPropertyMapper = (dispatch) => {
-
+    return {
+        createModule: () => dispatch({type: "CREATE_MODULE"}),
+        deleteModule: (item) => dispatch(
+            {
+                type: "DELETE_MODULE",
+                module: item
+            }
+        ),
+        updateModule: (item) => dispatch(
+            {
+                type: "UPDATE_MODULE",
+                module: item
+            }
+        ),
+    }
 };
 
 

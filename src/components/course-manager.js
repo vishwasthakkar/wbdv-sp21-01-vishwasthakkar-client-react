@@ -4,17 +4,18 @@ import CourseGrid from "./course-grid/course-grid";
 import {Link, Route} from "react-router-dom";
 import courseService from "../services/course-service";
 import "./course-table/course-list.style.client.css";
+import CourseHeader from "./course-header";
 
 export default class CourseManager
     extends React.Component {
     state = {
-        title: '',
         courses: []
     };
 
     componentDidMount() {
         courseService.findAllCourses()
             .then(courses => this.setState({courses}))
+
     }
 
     updateCourse = (course) => {
@@ -43,57 +44,20 @@ export default class CourseManager
             })
     };
 
-    addCourse = () => {
-        const newCourse = {
-            title: this.state.title,
-            owner: "me",
-            lastModified: "2/10/2021"
-        };
+    addCourse = (newCourse) => {
         courseService.createCourse(newCourse)
             .then(actualCourse => {
-                this.state.courses.push(actualCourse)
-                this.setState(this.state)
-            })
+                this.state.courses.push(actualCourse);
+                this.setState(this.state);
+            });
         document.getElementById("courseInput").value = "";
     };
 
     render() {
         return(
             <div>
-                <div className="wbdv-sticky-top"
-                     style={{ backgroundColor: "cornflowerblue", padding: "10px"}}>
-                    <div className="row">
-                        <div className="col-1 ml-4">
-                            <i className="fa fa-bars fa-lg">&nbsp;</i>
-                        </div>
-                        <div className="col-2 d-none d-lg-block">
-                            <h4>
-                                Course Manager
-                            </h4>
-                        </div>
-                        <div className="col col-lg-7">
-                            <input className="form-control"
-                                   id="courseInput"
-                                   onChange={event => this.setState({title: event.target.value})}
-                                   placeholder="New Course Title"/>
-                        </div>
-                        <div className="col-1 mr-4 ml-lg-4">
-                            <button type="button"
-                                    className="btn btn-danger skeleton-add-button"
-                                    onClick={this.addCourse}>
-                                <i className="fa fa-plus" aria-hidden="true">&nbsp;</i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="button"
-                        className="btn btn-danger btn-circle-float wbdv-sticky-bottom"
-                        onClick={this.addCourse}>
-                    <i className="fa fa-plus" aria-hidden="true">&nbsp;</i>
-                </button>
-
                 <Route path={['/courses', '/courses/table']} exact={true} >
+                    <CourseHeader addCourse={this.addCourse}/>
                     <CourseTable
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
@@ -101,12 +65,13 @@ export default class CourseManager
                 </Route>
 
                 <Route path="/courses/grid" exact={true} >
+                    <CourseHeader addCourse={this.addCourse}/>
                     <CourseGrid
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
-
+                {/*<Route path="/courses/edit" component={CourseEditor} exact={true}/>*/}
             </div>
         )
     }
