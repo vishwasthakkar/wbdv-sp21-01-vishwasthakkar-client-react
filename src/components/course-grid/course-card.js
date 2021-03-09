@@ -54,7 +54,7 @@ const CourseCard = ({
                     <p className="card-text">
                         Some Description
                     </p>
-                    <Link to="/editor" className="btn btn-primary">
+                    <Link to={`/courses/grid/edit/${course._id}`} className="btn btn-primary">
                         {course.title}
                     </Link>
                     <span>

@@ -31,7 +31,7 @@ const CourseRow = (
                         <a href="#"><i className="fa fa-file">
                             &nbsp;
                         </i></a>
-                        <Link to="/editor">
+                        <Link to={`/courses/table/edit/${course._id}`}>
                             {course.title}
                         </Link>
                     </span>

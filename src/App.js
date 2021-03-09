@@ -10,7 +10,6 @@ function App() {
       <BrowserRouter>
         <div>
           <Route path="/" exact={true} component={Home}/>
-          <Route path="/editor" component={CourseEditor}/>
           <Route path="/courses" component={CourseManager}/>
         </div>
       </BrowserRouter>

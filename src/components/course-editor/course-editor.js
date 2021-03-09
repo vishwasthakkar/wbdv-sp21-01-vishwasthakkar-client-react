@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {combineReducers} from 'redux';
@@ -20,8 +20,9 @@ const reducer = combineReducers({
 
 const store = createStore(reducer);
 
-const CourseEditor = (props) =>
-    <Provider store={store}>
+const CourseEditor = (props) => {
+    const {courseId, layout} = useParams();
+    return (<Provider store={store}>
         <div className="container">
             <div className="m-3">
                 <h2>
@@ -31,7 +32,7 @@ const CourseEditor = (props) =>
                             &nbsp;
                         </i>
                     </a>
-                    Course Editor
+                    Course Editor {courseId} {layout}
                 </h2>
             </div>
 
@@ -39,7 +40,7 @@ const CourseEditor = (props) =>
                 <div className="col-4">
                     <ModuleList/>
                 </div>
-                <div className="col-8" style={{backgroundColor:"white"}}>
+                <div className="col-8" style={{backgroundColor: "white"}}>
                     <LessonTabs/>
                     <br/>
                     <TopicPills/>
@@ -47,7 +48,7 @@ const CourseEditor = (props) =>
                 </div>
             </div>
         </div>
-    </Provider>
-
+    </Provider>)
+};
 
 export default CourseEditor;

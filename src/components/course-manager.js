@@ -5,6 +5,7 @@ import {Link, Route} from "react-router-dom";
 import courseService from "../services/course-service";
 import "./course-table/course-list.style.client.css";
 import CourseHeader from "./course-header";
+import CourseEditor from "./course-editor/course-editor";
 
 export default class CourseManager
     extends React.Component {
@@ -71,7 +72,9 @@ export default class CourseManager
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
-                {/*<Route path="/courses/edit" component={CourseEditor} exact={true}/>*/}
+                <Route path="/courses/:layout/edit/:courseId"
+                       component={CourseEditor}
+                       exact={true}/>
             </div>
         )
     }
