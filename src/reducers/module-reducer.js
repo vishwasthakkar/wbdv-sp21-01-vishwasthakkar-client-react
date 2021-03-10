@@ -1,82 +1,46 @@
 const initialState = {
-    modules: [
-        {_id: "123", title: "XYZ"},
-        {_id: "456", title: "ABC"}
-    ]
+    modules: []
 };
 
 const ModuleReducer = (state=initialState, action) => {
     switch (action.type) {
         case "CREATE_MODULE":
+            console.log(state.modules);
             return {
+                ...state,
                 modules: [
                     ...state.modules,
-                    {
-                        // FIXME remove hard-codded ID
-                        _id: (new Date()).getTime(),
-                        title: "New Module"
-                    }
+                    action.moduleToCreate
                 ]
             };
-
         case "DELETE_MODULE":
             return {
-                modules: state.modules.filter(
-                    module => module._id !== action.module._id)
+                ...state,
+                modules: state.modules.filter(module => {
+                    return module._id !== action.moduleToDelete._id;
+                })
             };
-
         case "UPDATE_MODULE":
             return {
-                modules: state.modules.map(module=>{
-                    if(module._id === action.module._id){
-                        return action.module;
+                ...state,
+                modules: state.modules.map(module => {
+                    if(module._id === action.updateModule._id) {
+                        return action.updateModule
                     } else {
-                        return module;
+                        return module
                     }
                 })
+            };
+        case "FIND_MODULES_FOR_COURSE":
+            return {
+                ...state,
+                modules: action.modules
             };
 
         default:
             return state;
 
     }
-    // switch (action.type) {
-    //
-    //     case "FIND_MODULES_FOR_COURSE":
-    //         return {
-    //             ...state,
-    //             modules: action.modules
-    //         };
-    //
-    //     case "CREATE_MODULE":
-    //         return {
-    //             modules: [
-    //                 ...state.modules,
-    //                 action.module
-    //             ]
-    //         };
-    //
-    //     case "DELETE_MODULE":
-    //         return {
-    //             modules: state.modules.filter(module => {
-    //                 return module._id !== action.moduleToDelete._id;
-    //             })
-    //         };
-    //
-    //     case "UPDATE_MODULE":
-    //         return {
-    //             modules: state.modules.map(module => {
-    //                 if (module._id === action.moduleToUpdate._id) {
-    //                     return action.moduleToUpdate
-    //                 } else {
-    //                     return module
-    //                 }
-    //             })
-    //         };
-    //
-    //     default:
-    //         return state
-    // }
 };
 
 export default ModuleReducer;
