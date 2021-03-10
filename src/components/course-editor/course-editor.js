@@ -43,7 +43,7 @@ const CourseEditor = (props) => {
                 <div className="col-8" style={{backgroundColor: "white"}}>
                     <LessonTabs/>
                     <br/>
-                    {/*<TopicPills/>*/}
+                    <TopicPills/>
                     <br/>
                     <h5>
                         <ul>
