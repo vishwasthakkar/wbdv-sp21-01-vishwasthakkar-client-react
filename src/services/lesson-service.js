@@ -2,8 +2,8 @@ const LESSONS_URL = "https://wbdv-generic-server.herokuapp.com/api/vishwasthakka
 const MODULES_URL = "https://wbdv-generic-server.herokuapp.com/api/vishwasthakkar/modules";
 
 
-export const createLesson = (courseId, lesson) =>
-    fetch(`${MODULES_URL}/${courseId}/lessons`, {
+export const createLesson = (moduleId, lesson) =>
+    fetch(`${MODULES_URL}/${moduleId}/lessons`, {
         method: "POST",
         body: JSON.stringify(lesson),
         headers: {
@@ -12,8 +12,8 @@ export const createLesson = (courseId, lesson) =>
     })
         .then(response => response.json());
 
-export const updateLesson = (moduleId, lesson) =>
-    fetch(`${MODULES_URL}/${moduleId}`, {
+export const updateLesson = (lessonId, lesson) =>
+    fetch(`${LESSONS_URL}/${lessonId}`, {
         method: "PUT",
         body: JSON.stringify(lesson),
         headers: {
@@ -22,8 +22,8 @@ export const updateLesson = (moduleId, lesson) =>
     })
         .then(response => response.json());
 
-export const findLessonsForModule = (courseId) =>
-    fetch(`${LESSONS_URL}/${courseId}/lessons`)
+export const findLessonsForModule = (moduleId) =>
+    fetch(`${MODULES_URL}/${moduleId}/lessons`)
         .then(response => response.json());
 
 export const deleteLesson = (lessonId) =>

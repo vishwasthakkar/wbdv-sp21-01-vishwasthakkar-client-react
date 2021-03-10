@@ -1,70 +1,47 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import {connect} from "react-redux";
 import EditableItem from "../editable-item";
+import moduleService from "../../services/module-service"
 
 const ModuleList = ({
     modules = [],
     createModule,
     deleteModule,
-    updateModule
-}) =>
-    <div>
+    updateModule,
+    findModulesForCourse
+}) =>{
+    const {layout, moduleId, courseId} = useParams();
+    useEffect(() => {
+        findModulesForCourse(courseId)
+    }, []);
+    return (<div>
         <h2>Module List {modules.length}</h2>
         <ul className="list-group">
             {
                 modules.map(module => {
                     return (
-                        <li className="list-group-item">
+                        <li className={`list-group-item ${module._id === moduleId ? 'active' : ''}`}>
                             <EditableItem item = {module}
                                           deleteItem={deleteModule}
                                           updateItem={updateModule}
+                                          to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
+                                          active={module._id === moduleId}
+                                          ifTextWhite={true}
                             />
                         </li>
                     )
                 })
             }
-            {/*<li className="list-group-item active">Module 1 - jQuery*/}
-                {/*<i className="fas fa-times fa-lg float-right">*/}
-                    {/*&nbsp;*/}
-                {/*</i>*/}
-            {/*</li>*/}
-            {/*<li className="list-group-item">Module 2 - React*/}
-                {/*<i className="fas fa-times fa-lg float-right">*/}
-                    {/*&nbsp;*/}
-                {/*</i>*/}
-            {/*</li>*/}
-            {/*<li className="list-group-item">Module 3 - Redux*/}
-                {/*<i className="fas fa-times fa-lg float-right">*/}
-                    {/*&nbsp;*/}
-                {/*</i>*/}
-            {/*</li>*/}
-            {/*<li className="list-group-item">Module 4 - Native*/}
-                {/*<i className="fas fa-times fa-lg float-right">*/}
-                    {/*&nbsp;*/}
-                {/*</i>*/}
-            {/*</li>*/}
-            {/*<li className="list-group-item">Module 5 - Angular*/}
-                {/*<i className="fas fa-times fa-lg float-right">*/}
-                    {/*&nbsp;*/}
-                {/*</i>*/}
-            {/*</li>*/}
-            {/*<li className="list-group-item">Module 6 - Node*/}
-                {/*<i className="fas fa-times fa-lg float-right">*/}
-                    {/*&nbsp;*/}
-                {/*</i>*/}
-            {/*</li>*/}
-            {/*<li className="list-group-item">Module 7 - Mongo*/}
-                {/*<i className="fas fa-times fa-lg float-right">*/}
-                    {/*&nbsp;*/}
-                {/*</i>*/}
-            {/*</li>*/}
-            <li  onClick={createModule} className="list-group-item text-center">
+            <li  onClick={()=>createModule(courseId)} className="list-group-item text-center">
                 <i className="fas fa-plus fa-lg">
                     &nbsp;
                 </i>
             </li>
         </ul>
-    </div>;
+    </div>);
+};
+
 
 const stateToPropertyMapper = (state) => {
     return{
@@ -74,19 +51,30 @@ const stateToPropertyMapper = (state) => {
 
 const dispatchToPropertyMapper = (dispatch) => {
     return {
-        createModule: () => dispatch({type: "CREATE_MODULE"}),
-        deleteModule: (item) => dispatch(
-            {
-                type: "DELETE_MODULE",
-                module: item
-            }
-        ),
-        updateModule: (item) => dispatch(
-            {
-                type: "UPDATE_MODULE",
-                module: item
-            }
-        ),
+        createModule: (courseId) => {
+            moduleService.createModule(courseId, {title: 'New Module'})
+                .then(moduleToCreate => dispatch(
+                    {
+                        type: "CREATE_MODULE",
+                        moduleToCreate: moduleToCreate
+                    }));
+        },
+        updateModule: (newModule) => {
+                moduleService.updateModule(newModule._id, newModule)
+                    .then(status => dispatch({type: "UPDATE_MODULE", updateModule: newModule}))
+            },
+        deleteModule: (moduleToDelete) => {
+            moduleService.deleteModule(moduleToDelete._id)
+                .then(status => dispatch({type: "DELETE_MODULE", moduleToDelete: moduleToDelete}))
+        },
+        findModulesForCourse: (courseId) => {
+            moduleService.findModulesForCourse(courseId)
+                .then(modules => dispatch({
+                                              type: "FIND_MODULES_FOR_COURSE",
+                                              modules: modules
+                                          }))
+        }
+
     }
 };
 

@@ -7,7 +7,8 @@ const EditableItem = (
         deleteItem,
         updateItem,
         item = {title: "Some Title", _id: "ABC"},
-        active
+        active,
+        ifTextWhite
     }) => {
 
     const [editing, setEditing] = useState(false);
@@ -19,7 +20,9 @@ const EditableItem = (
                 !editing &&
                 <>
                     <Link className={`nav-link ${active?'active':''} d-inline`} to={to}>
-                        {item.title}
+                        <span className={(active && ifTextWhite) ? 'text-white':''}>
+                            {item.title}
+                        </span>
                     </Link>
                     <i onClick={() => setEditing(true)} className="fas fa-edit float-right">
                         &nbsp;

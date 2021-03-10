@@ -21,7 +21,7 @@ const reducer = combineReducers({
 const store = createStore(reducer);
 
 const CourseEditor = (props) => {
-    const {courseId, layout} = useParams();
+    const {courseId, moduleId, lessonId, topicId, layout} = useParams();
     return (<Provider store={store}>
         <div className="container">
             <div className="m-3">
@@ -43,8 +43,24 @@ const CourseEditor = (props) => {
                 <div className="col-8" style={{backgroundColor: "white"}}>
                     <LessonTabs/>
                     <br/>
-                    <TopicPills/>
+                    {/*<TopicPills/>*/}
                     <br/>
+                    <h5>
+                        <ul>
+                            <li>
+                                Course ID: {courseId}
+                            </li>
+                            <li>
+                                Module ID: {moduleId}
+                            </li>
+                            <li>
+                                Lesson ID: {lessonId}
+                            </li>
+                            <li>
+                                Topic ID: {topicId}
+                            </li>
+                        </ul>
+                    </h5>
                 </div>
             </div>
         </div>
