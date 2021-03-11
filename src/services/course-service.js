@@ -33,12 +33,9 @@ export const deleteCourse = (courseId) => {
         .then(response => response.json())
 };
 
-export const findCourseById = (courseId) => {
-    fetch(`${COURSES_URL}/${courseId}`,{
-        method: 'GET'
-    })
-        .then(response => response.json())
-};
+export const findCourseById = (courseID) =>
+    fetch(`${COURSES_URL}/${courseID}`)
+        .then(response => response.json());
 
 export default {
     createCourse,

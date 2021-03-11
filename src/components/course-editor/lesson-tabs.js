@@ -9,21 +9,21 @@ const LessonTabs = ({
     createLesson,
     updateLesson,
     deleteLesson,
-    findLessonsForModule
+    findLessonsForModule,
+                        clearLesson
 }) => {
     const {courseId, moduleId, lessonId, layout} = useParams();
 
     useEffect(() => {
-
-        // if (moduleId !== "undefined" && typeof moduleId !== "undefined") {
+        if (moduleId !== "undefined" && typeof moduleId !== "undefined") {
             findLessonsForModule(moduleId)
-        // }
-    }, [moduleId]);
+        }
+        return () => {
+            clearLesson()
+        }
+    }, [moduleId])
 
     return (<div>
-        <h2>
-            Lessons {lessons.length}
-        </h2>
         <ul className="nav nav-tabs">
             {
                 lessons.map(lesson =>
@@ -43,7 +43,7 @@ const LessonTabs = ({
             }
             <li className="nav-item">
                 <a className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
-                    <i onClick={() => createLesson(moduleId)} className="fas fa-lg fa-plus">
+                    <i onClick={() => {moduleId !== undefined ? createLesson(moduleId) : ''}} className="fas fa-lg fa-plus">
                         &nbsp;
                     </i>
                 </a>
@@ -89,6 +89,8 @@ const dispatchToPropertyMapper = (dispatch) => {
                                                  lessons: theLessons
                                              }))
         },
+
+        clearLesson: () => dispatch({type: "CLEAR_LESSON"})
 
 
     }

@@ -16,7 +16,6 @@ const ModuleList = ({
         findModulesForCourse(courseId)
     }, []);
     return (<div>
-        <h2>Module List {modules.length}</h2>
         <ul className="list-group">
             {
                 modules.map(module => {

@@ -34,7 +34,7 @@ export const deleteModule = (moduleId) =>
 
 export const findModule = (moduleId) =>
     fetch(`${MODULES_URL}/${moduleId}`)
-        .then(response => response.json())
+        .then(response => response.json());
 
 const api = {
     createModule,

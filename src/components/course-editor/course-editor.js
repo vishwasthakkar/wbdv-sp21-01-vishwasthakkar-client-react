@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link, useParams} from "react-router-dom";
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -18,10 +18,19 @@ const reducer = combineReducers({
     TopicReducer: TopicReducer
 });
 
+import courseService from '../../services/course-service';
+
 const store = createStore(reducer);
 
 const CourseEditor = (props) => {
     const {courseId, moduleId, lessonId, topicId, layout} = useParams();
+
+    const [currentCourse, setCurrentCourse] = useState("")
+
+    useEffect(() => {
+        courseService.findCourseById(courseId).then(data => setCurrentCourse(data.title))
+    }, []);
+
     return (<Provider store={store}>
         <div className="container">
             <div className="m-3">
@@ -32,7 +41,7 @@ const CourseEditor = (props) => {
                             &nbsp;
                         </i>
                     </a>
-                    Course Editor {courseId} {layout}
+                    {currentCourse}
                 </h2>
             </div>
 
