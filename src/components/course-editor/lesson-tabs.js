@@ -21,7 +21,7 @@ const LessonTabs = ({
         return () => {
             clearLesson()
         }
-    }, [moduleId])
+    }, [moduleId]);
 
     return (<div>
         <ul className="nav nav-tabs">

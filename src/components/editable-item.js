@@ -35,7 +35,7 @@ const EditableItem = (
                 <>
                     <input onChange={(e) =>
                             setCachedItem({
-                                              ...cachedItem,
+                                              ...item,
                                               title: e.target.value})}
                         value={cachedItem.title}/>
 
@@ -45,7 +45,10 @@ const EditableItem = (
                     }} className="fas fa-check float-right">
                         &nbsp;
                     </i>
-                    <i onClick={() => deleteItem(item)}
+                    <i onClick={() => {
+                        setEditing(false);
+                        deleteItem(item)
+                    }}
                        className="fas fa-times float-right">
                         &nbsp;
                     </i>
