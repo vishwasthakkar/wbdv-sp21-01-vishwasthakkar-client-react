@@ -11,14 +11,17 @@ import TopicPills from "./topic-pills";
 import ModuleReducer from '../../reducers/module-reducer';
 import LessonReducer from '../../reducers/lesson-reducer';
 import TopicReducer from '../../reducers/topic-reducer';
+import WidgetReducer from '../../reducers/widget-reducer';
 
 const reducer = combineReducers({
     ModuleReducer: ModuleReducer,
     LessonReducer: LessonReducer,
-    TopicReducer: TopicReducer
+    TopicReducer: TopicReducer,
+    WidgetReducer: WidgetReducer
 });
 
 import courseService from '../../services/course-service';
+import WidgetList from "./widgets/widget-list";
 
 const store = createStore(reducer);
 
@@ -54,22 +57,7 @@ const CourseEditor = (props) => {
                     <br/>
                     <TopicPills/>
                     <br/>
-                    <h5>
-                        <ul>
-                            <li>
-                                Course ID: {courseId}
-                            </li>
-                            <li>
-                                Module ID: {moduleId}
-                            </li>
-                            <li>
-                                Lesson ID: {lessonId}
-                            </li>
-                            <li>
-                                Topic ID: {topicId}
-                            </li>
-                        </ul>
-                    </h5>
+                    <WidgetList/>
                 </div>
             </div>
         </div>
