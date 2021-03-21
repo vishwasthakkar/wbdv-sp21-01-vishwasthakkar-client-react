@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {useParams} from 'react-router-dom'
 import EditableItem from "../editable-item";
-import lessonService from "../../services/lesson-service";
+import LessonActions from "../../actions/lesson-actions";
 
 const LessonTabs = ({
     lessons = [],
@@ -60,39 +60,11 @@ const stateToPropertyMapper = (state) => {
 
 const dispatchToPropertyMapper = (dispatch) => {
     return {
-        createLesson: (moduleId) => {
-            lessonService.createLesson(moduleId, {title: 'New Lesson'})
-                .then(lesson => dispatch(
-                    {
-                        type: "CREATE_LESSON",
-                        lesson: lesson
-                    }));
-        },
-        updateLesson: (lesson) => {
-            lessonService.updateLesson(lesson._id, lesson)
-                .then(status => dispatch({
-                                             type: "UPDATE_LESSON",
-                                             lesson: lesson
-                                        }))
-        },
-        deleteLesson: (lesson) => {
-            lessonService.deleteLesson(lesson._id)
-                .then(status => dispatch({
-                                             type: "DELETE_LESSON",
-                                             lesson: lesson
-                                        }))
-        },
-        findLessonsForModule: (moduleId) => {
-            lessonService.findLessonsForModule(moduleId)
-                .then(theLessons => dispatch({
-                                                 type: "FIND_LESSONS_FOR_MODULE",
-                                                 lessons: theLessons
-                                             }))
-        },
-
-        clearLesson: () => dispatch({type: "CLEAR_LESSON"})
-
-
+        createLesson: (moduleId) => LessonActions.createLesson(dispatch, moduleId),
+        updateLesson: (lesson) => LessonActions.updateLesson(dispatch, lesson),
+        deleteLesson: (lesson) => LessonActions.deleteLesson(dispatch, lesson),
+        findLessonsForModule: (moduleId) => LessonActions.findLessonsForModule(dispatch, moduleId),
+        clearLesson: () => LessonActions.clearLesson(dispatch)
     }
 };
 

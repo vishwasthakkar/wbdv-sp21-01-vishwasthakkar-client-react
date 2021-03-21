@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {connect} from "react-redux";
 import EditableItem from "../editable-item";
-import moduleService from "../../services/module-service"
+import ModuleActions from "../../actions/module-actions";
 
 const ModuleList = ({
     modules = [],
@@ -50,30 +50,10 @@ const stateToPropertyMapper = (state) => {
 
 const dispatchToPropertyMapper = (dispatch) => {
     return {
-        createModule: (courseId) => {
-            moduleService.createModule(courseId, {title: 'New Module'})
-                .then(moduleToCreate => dispatch(
-                    {
-                        type: "CREATE_MODULE",
-                        moduleToCreate: moduleToCreate
-                    }));
-        },
-        updateModule: (newModule) => {
-                moduleService.updateModule(newModule._id, newModule)
-                    .then(status => dispatch({type: "UPDATE_MODULE", updateModule: newModule}))
-            },
-        deleteModule: (moduleToDelete) => {
-            moduleService.deleteModule(moduleToDelete._id)
-                .then(status => dispatch({type: "DELETE_MODULE", moduleToDelete: moduleToDelete}))
-        },
-        findModulesForCourse: (courseId) => {
-            moduleService.findModulesForCourse(courseId)
-                .then(modules => dispatch({
-                                              type: "FIND_MODULES_FOR_COURSE",
-                                              modules: modules
-                                          }))
-        }
-
+        createModule: (courseId) => ModuleActions.createModule(dispatch, courseId),
+        updateModule: (newModule) => ModuleActions.updateModule(dispatch, newModule),
+        deleteModule: (moduleToDelete) => ModuleActions.deleteModule(dispatch, moduleToDelete),
+        findModulesForCourse: (courseId) => ModuleActions.findModulesForCourse(dispatch, courseId)
     }
 };
 
