@@ -23,7 +23,7 @@ const WidgetList = (
 
     return(
         <div>
-            <i onClick={createWidget} className="fas fa-plus float-right fa-2x">
+            <i onClick={()=>createWidget(topicId)} className="fas fa-plus float-right fa-2x">
                 &nbsp;
             </i>
             <h1>Widget List</h1>

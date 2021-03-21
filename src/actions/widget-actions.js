@@ -11,7 +11,7 @@ export const createWidget = (dispatch, topicId) => {
                                            name: 'New Widget',
                                            type:"HEADING",
                                            size:1,
-                                           text:'New Widget'
+                                           text:'Edit text here for the heading widget!'
                                        })
         .then(widget => dispatch({type: CREATE_WIDGET, widget: widget}))
 };

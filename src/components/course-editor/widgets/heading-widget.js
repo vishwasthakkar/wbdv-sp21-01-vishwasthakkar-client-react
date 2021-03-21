@@ -12,7 +12,7 @@ const HeadingWidget = ({
     return (
         <div>
             { !editing &&
-                <>
+                <span>
                     {widget.size === 1 && <h1>{widget.text}</h1>}
                     {widget.size === 2 && <h2>{widget.text}</h2>}
                     {widget.size === 3 && <h3>{widget.text}</h3>}
@@ -22,7 +22,7 @@ const HeadingWidget = ({
                     <i onClick={() => setEditing(true)} className="fas fa-cog float-right">
                         &nbsp;
                     </i>
-                </>
+                </span>
             }
 
             {
