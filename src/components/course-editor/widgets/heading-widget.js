@@ -12,17 +12,17 @@ const HeadingWidget = ({
     return (
         <div>
             { !editing &&
-                <span>
+                <>
                     {widget.size === 1 && <h1>{widget.text}</h1>}
                     {widget.size === 2 && <h2>{widget.text}</h2>}
                     {widget.size === 3 && <h3>{widget.text}</h3>}
                     {widget.size === 4 && <h4>{widget.text}</h4>}
                     {widget.size === 5 && <h5>{widget.text}</h5>}
                     {widget.size === 6 && <h6>{widget.text}</h6>}
-                    <i onClick={() => setEditing(true)} className="fas fa-cog float-right">
+                    <span><i onClick={() => setEditing(true)} className="fas fa-cog float-right">
                         &nbsp;
-                    </i>
-                </span>
+                    </i></span>
+                </>
             }
 
             {
@@ -30,7 +30,7 @@ const HeadingWidget = ({
                 <div>
                     <select
                         onChange={
-                            (e) => setCache(widget => ({...cache, type: e.target.value}))
+                            (e) => setCache({...cache, type: e.target.value})
                         }
                         value={cache.type}
                         className="form-control"
