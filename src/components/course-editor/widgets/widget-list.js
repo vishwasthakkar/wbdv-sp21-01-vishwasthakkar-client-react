@@ -23,14 +23,21 @@ const WidgetList = (
 
     return(
         <div>
-            <i onClick={()=>createWidget(topicId)} className="fas fa-plus float-right fa-2x">
-                &nbsp;
-            </i>
-            <h1>Widget List</h1>
+            <div className="row justify-content-end mb-3">
+                <a href="#">
+                    <i onClick={()=>createWidget(topicId)}
+                       className="fas fa-plus float-right fa-2x"
+                    >
+                        &nbsp;
+                    </i>
+                </a>
+            </div>
+
+
             <ul className="list-group">
                 {
                     widgets.map(widget =>
-                        <li key={widget.id} className="list-group-item">
+                        <li key={widget.id} className="list-group-item mb-3">
                             {
                                 widget.type === "HEADING" &&
                                 <HeadingWidget
