@@ -5,7 +5,11 @@ const ListWidget = ({
     editing,
     updateCachedWidget
 }) => {
-    const ListType = widget.isOrdered ? 'ol' : 'ul';
+    const ListType = widget.listType === 'ul' ? 'ul' : 'ol';
+    const handleCheckBoxChange = () => {
+        const type = widget.listType === 'ul' ? 'ol' : 'ul';
+        updateCachedWidget({...widget, listType: type});
+    };
     return(
         <>
             {
@@ -13,8 +17,8 @@ const ListWidget = ({
                 <form>
                     <input
                         type="checkbox"
-                        onChange={e => updateCachedWidget({...widget, isOrdered: e.target.checked})}
-                        checked={widget.isOrdered}
+                        onChange={handleCheckBoxChange}
+                        checked={widget.listType === 'ol'}
                     />
                     <label>
                         &nbsp;&nbsp;Ordered
