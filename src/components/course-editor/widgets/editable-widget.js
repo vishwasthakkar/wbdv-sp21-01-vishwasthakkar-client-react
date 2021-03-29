@@ -61,7 +61,7 @@ const EditableWidget = ({
                             <option value={"IMAGE"}>Image</option>
                         </select>
 
-                        {renderWidget(widget)}
+                        {renderWidget(cache)}
 
                     </div>
 
