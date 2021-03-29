@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react'
 import {useParams} from "react-router-dom"
 import {connect} from "react-redux";
-import HeadingWidget from "./heading-widget";
-import ParagraphWidget from "./paragraph-widget";
+import EditableWidget from './editable-widget';
 import WidgetActions from "../../../actions/widget-actions";
 
 
@@ -25,7 +24,7 @@ const WidgetList = (
         <div>
             <div className="row justify-content-end mb-3">
                 <a href="#">
-                    <i onClick={()=>createWidget(topicId)}
+                    <i onClick={()=> topicId ? createWidget(topicId) : alert('Please select a lesson first.')}
                        className="fas fa-plus float-right fa-2x"
                     >
                         &nbsp;
@@ -37,18 +36,9 @@ const WidgetList = (
             <ul className="list-group">
                 {
                     widgets.map(widget =>
-                        <li key={widget.id} className="list-group-item mb-3">
+                        <li key={widget.id} className="list-group-item">
                             {
-                                widget.type === "HEADING" &&
-                                <HeadingWidget
-                                    widget={widget}
-                                    updateWidget={updateWidget}
-                                    deleteWidget={deleteWidget}
-                                />
-                            }
-                            {
-                                widget.type === "PARAGRAPH" &&
-                                <ParagraphWidget
+                                <EditableWidget
                                     widget={widget}
                                     updateWidget={updateWidget}
                                     deleteWidget={deleteWidget}
