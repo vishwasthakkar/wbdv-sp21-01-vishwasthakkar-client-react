@@ -9,7 +9,7 @@ const ImageWidget = ({
 
         <>
             <img src={widget.url}
-                 alt='Unable to load image!'
+                 alt='Preview will be available here!'
                  height={widget.height}
                  width={widget.width ? widget.width : '100%'}
             />
