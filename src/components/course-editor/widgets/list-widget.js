@@ -23,6 +23,9 @@ const ListWidget = ({
                     <label>
                         &nbsp;&nbsp;Ordered
                     </label>
+                    <label style={{display: 'flex'}}>
+                        List items
+                    </label>
                     <textarea
                         value={widget.text}
                         onChange={e => updateCachedWidget({...widget, text: e.target.value})}

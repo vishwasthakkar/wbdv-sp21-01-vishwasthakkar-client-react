@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import HeadingWidget from "./heading-widget";
 import ParagraphWidget from "./paragraph-widget";
 import ListWidget from './list-widget'
+import ImageWidget from './image-widget'
 
 const EditableWidget = ({
      widget,
@@ -38,7 +39,13 @@ const EditableWidget = ({
                     />
                 );
             case "IMAGE":
-                return(1);
+                return(
+                    <ImageWidget
+                        updateCachedWidget={setCache}
+                        widget={cache}
+                        editing={editing}
+                    />
+                );
         }
     };
 
