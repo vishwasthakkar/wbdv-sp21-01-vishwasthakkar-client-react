@@ -30,6 +30,7 @@ const ListWidget = ({
                         value={widget.text}
                         onChange={e => updateCachedWidget({...widget, text: e.target.value})}
                         style={{display: 'block', maxWidth: '100%'}}
+                        placeholder="Enter one list item per line"
                         cols={100}
                         rows={5}
                     >

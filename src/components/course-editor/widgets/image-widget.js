@@ -22,6 +22,7 @@ const ImageWidget = ({
                         </label>
                         <input className='form-control'
                                onChange={(e) => updateCachedWidget({...widget, url: e.target.value})}
+                               placeholder="Image URL"
                                value={widget.url}
                         />
                     </div>
@@ -33,6 +34,7 @@ const ImageWidget = ({
                                onChange={e => e.target.value <= 600 ?
                                               updateCachedWidget({...widget, width: e.target.value}):
                                               updateCachedWidget({...widget, width: 600})}
+                               placeholder="Image width"
                                value={widget.width}
                         />
                     </div>
@@ -44,6 +46,7 @@ const ImageWidget = ({
                                onChange={(e) => e.target.value <= 600 ?
                                                 updateCachedWidget({...widget, height: e.target.value}):
                                                 updateCachedWidget({...widget, height: 600})}
+                               placeholder="Image height"
                                value={widget.height}/>
                     </div>
                  </>
