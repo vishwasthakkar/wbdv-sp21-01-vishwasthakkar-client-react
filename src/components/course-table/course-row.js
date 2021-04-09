@@ -24,7 +24,7 @@ const CourseRow = (
 
     return(
         <tr className="course">
-            <td className="d-table-cell" style={{width: "50%"}}>
+            <td className="d-table-cell" style={{width: "40%"}}>
                 {
                     !editing &&
                     <span>
@@ -49,6 +49,12 @@ const CourseRow = (
             </td>
             <td className="d-none d-lg-table-cell">
                 {course.lastModified}
+            </td>
+            <td className="mx-auto">
+                <Link
+                      to={`/courses/${course._id}/quizzes`}>
+                    Quizzes
+                </Link>
             </td>
             <td  className="d-table-cell">
                 <span>

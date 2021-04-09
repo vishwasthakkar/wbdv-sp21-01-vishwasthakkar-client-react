@@ -6,11 +6,16 @@ import courseService from "../services/course-service";
 import "./course-table/course-list.style.client.css";
 import CourseHeader from "./course-header";
 import CourseEditor from "./course-editor/course-editor";
+import CourseQuizzes from "./course-quizzes"
+import Quiz from "./quiz";
 
 export default class CourseManager
     extends React.Component {
     state = {
-        courses: []
+        courses: [
+            {_id: '123', title:'abc'},
+            {_id: '234', title:'xyz'},
+        ]
     };
 
     componentDidMount() {
@@ -81,6 +86,10 @@ export default class CourseManager
                        component={CourseEditor}
                        exact={true}
                 />
+
+
+                <Route path={['/courses/:courseId/quizzes']} component={CourseQuizzes} exact={true}/>
+                <Route path={['/courses/:courseId/quizzes/:quizId']} component={Quiz} exact={true}/>
             </div>
         )
     }
