@@ -7,7 +7,7 @@ import "./course-table/course-list.style.client.css";
 import CourseHeader from "./course-header";
 import CourseEditor from "./course-editor/course-editor";
 import CourseQuizzes from "./course-quizzes"
-import Quiz from "./quiz";
+import Quiz from "./quiz/quiz";
 
 export default class CourseManager
     extends React.Component {

@@ -18,7 +18,7 @@ const CourseQuizzes = () => {
     return(
         <div className='container'>
             <h2>
-                <Link to='/courses/table'>
+                <Link to={`/courses/table`}>
                     <i className='fas fa-times'>&nbsp;</i>
                 </Link>
                 Quizzes
@@ -42,7 +42,7 @@ const CourseQuizzes = () => {
                 )
             }
 
-        </div>
+            </div>
         </div>
     );
 };
