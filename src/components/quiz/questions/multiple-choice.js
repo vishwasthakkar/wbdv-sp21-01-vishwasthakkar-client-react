@@ -1,4 +1,5 @@
 import React from 'react';
+import Choice from './choice/choice';
 
 const MultipleChoice = ({
     id, answer, handleAnswerChange, handleActive, choices
@@ -7,13 +8,13 @@ const MultipleChoice = ({
         <div className='list-group'>
             {
                 choices.map(choice =>
-                    <div className={`list-group-item ${handleActive(choice)}`}>
-                        <input type='radio' name={id} value={choice}
-                               checked={answer === choice}
-                               onChange={handleAnswerChange}/>
-                        &nbsp;
-                        {choice}
-                    </div>
+                    <Choice
+                        id={id}
+                        choice={choice}
+                        handleAnswerChange={handleAnswerChange}
+                        answer={answer}
+                        type={handleActive(choice)}
+                    />
                 )
             }
         </div>

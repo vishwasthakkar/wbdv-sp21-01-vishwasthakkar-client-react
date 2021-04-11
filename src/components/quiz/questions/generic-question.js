@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import TrueFalse from "./true-false";
 import MultipleChoice from "./multiple-choice";
-
+import './choice/choice..style.client.css';
 
 const GenericQuestion = ({
     question
@@ -21,13 +21,13 @@ const GenericQuestion = ({
     const handleActive = val => {
         if(isCorrect === 1){
             return val.localeCompare(question.correct) === 0 ?
-                   'list-group-item-success' : '';
+                   'correct' : '';
         }
         else if(isCorrect === -1){
             if(val.localeCompare(answer) === 0){
-                return 'list-group-item-danger';
+                return 'wrong';
             } else if(val.localeCompare(question.correct) === 0) {
-                return 'list-group-item-success'
+                return 'correct'
             }
         }
     };
@@ -60,6 +60,9 @@ const GenericQuestion = ({
         <div>
             <h5>
                 {question.question}
+                &nbsp;
+                {isCorrect === 1 ? <i className='fas fa-check green-tick'>&nbsp;</i> : ''}
+                {isCorrect === -1 ? <i className='fas fa-times red-cross'>&nbsp;</i> : ''}
             </h5>
 
             { handleQuestionType() }

@@ -1,24 +1,25 @@
 import React from 'react';
+import Choice from './choice/choice';
 
 const TrueFalse = ({
     id, answer, handleAnswerChange, handleActive
 }) => {
     return(
         <div className='list-group'>
-            <div className={`list-group-item ${handleActive('true')}`}>
-                <input type='radio' name={id} value='true'
-                       checked={answer === 'true'}
-                       onChange={handleAnswerChange}/>
-                &nbsp;
-                True
-            </div>
-            <div className={`list-group-item ${handleActive('false')}`}>
-                <input type='radio' name={id} value='false'
-                       checked={answer === 'false'}
-                       onChange={handleAnswerChange}/>
-                &nbsp;
-                False
-            </div>
+            <Choice
+                id={id}
+                choice={'true'}
+                handleAnswerChange={handleAnswerChange}
+                answer={answer}
+                type={handleActive('true')}
+            />
+            <Choice
+                id={id}
+                choice={'false'}
+                handleAnswerChange={handleAnswerChange}
+                answer={answer}
+                type={handleActive('false')}
+            />
         </div>
     );
 };
