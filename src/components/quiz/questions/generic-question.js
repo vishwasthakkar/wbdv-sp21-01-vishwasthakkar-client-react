@@ -46,6 +46,7 @@ const GenericQuestion = ({
                         answer={answer}
                         handleAnswerChange={handleAnswerChange}
                         handleActive={handleActive}
+                        disabled={isCorrect !== 0}
                     />
                 );
             case 'MULTIPLE_CHOICE':
@@ -56,6 +57,7 @@ const GenericQuestion = ({
                         handleAnswerChange={handleAnswerChange}
                         handleActive={handleActive}
                         choices={question.choices}
+                        disabled={isCorrect !== 0}
                     />
                 );
         }

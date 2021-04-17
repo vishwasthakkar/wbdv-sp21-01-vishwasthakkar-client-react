@@ -2,7 +2,7 @@ import React from 'react';
 import './choice..style.client.css';
 
 const Choice = ({
-    choice, type, answer, handleAnswerChange, id
+    choice, type, answer, handleAnswerChange, id, disabled
 }) => {
     return(
         <div className={`list-group-item
@@ -11,7 +11,9 @@ const Choice = ({
                         `}>
             <input type='radio' name={id} value={choice}
                    checked={answer === choice}
-                   onChange={handleAnswerChange}/>
+                   onChange={handleAnswerChange}
+                   disabled={disabled}
+            />
             &nbsp;
             {choice}
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Choice from './choice/choice';
 
 const TrueFalse = ({
-    id, answer, handleAnswerChange, handleActive
+    id, answer, handleAnswerChange, handleActive, disabled
 }) => {
     return(
         <div className='list-group'>
@@ -19,6 +19,7 @@ const TrueFalse = ({
                 handleAnswerChange={handleAnswerChange}
                 answer={answer}
                 type={handleActive('false')}
+                disabled={disabled}
             />
         </div>
     );

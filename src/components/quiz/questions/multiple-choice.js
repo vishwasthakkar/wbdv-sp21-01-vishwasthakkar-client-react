@@ -2,7 +2,7 @@ import React from 'react';
 import Choice from './choice/choice';
 
 const MultipleChoice = ({
-    id, answer, handleAnswerChange, handleActive, choices
+    id, answer, handleAnswerChange, handleActive, choices, disabled
 }) => {
     return(
         <div className='list-group'>
@@ -14,6 +14,7 @@ const MultipleChoice = ({
                         handleAnswerChange={handleAnswerChange}
                         answer={answer}
                         type={handleActive(choice)}
+                        disabled={disabled}
                     />
                 )
             }
