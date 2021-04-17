@@ -10,17 +10,24 @@ const findQuizById = (qid) => {
 };
 
 const submitQuiz = (quizId, questions) => {
-    fetch(`${QUIZZES_URL}/${quizId}/attempts`, {
+    return fetch(`${QUIZZES_URL}/${quizId}/attempts`, {
         method: 'POST',
         body: JSON.stringify(questions),
         headers: {
             'content-type': 'application/json'
         }
-    }).then(response => response.json())
-        .then(result => console.log(result))
+    });
+};
+
+const findAllAttemptsOfQuiz = (quizId) => {
+    return fetch(`${QUIZZES_URL}/${quizId}/attempts`)
+        .then(response => response.json());
 };
 
 
 export default {
-    findAllQuizzes, findQuizById, submitQuiz
+    findAllQuizzes,
+    findQuizById,
+    submitQuiz,
+    findAllAttemptsOfQuiz
 }

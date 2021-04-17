@@ -43,13 +43,20 @@ const Quiz = () => {
                 }
             </div>
             <div className='d-block'>
-                <button className='btn btn-danger'
-                        onClick={() => {
-                            console.log(questions);
-                            quizzesService.submitQuiz(quizId, questions);
-                        }}>
-                    Submit
-                </button>
+
+                    <button className='btn btn-danger w-100'
+                            onClick={() => {
+                                quizzesService.submitQuiz(quizId, questions);
+                                setTimeout(
+                                    () => {
+                                        window.location.href=`/courses/${courseId}/quizzes/${quizId}/attempts`;
+                                    },
+                                    500
+                                );
+                            }}>
+                        Submit
+                    </button>
+
             </div>
         </div>
     );
