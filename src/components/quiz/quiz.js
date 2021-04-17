@@ -17,9 +17,7 @@ const Quiz = () => {
             .then(quiz => setName(quiz.title));
 
         questionsService.findQuestionsForQuiz(quizId)
-            .then(questions => {
-                setQuestions(questions)
-            });
+            .then(receivedQuestions => setQuestions(receivedQuestions));
 
     }, [quizId]);
 
@@ -37,10 +35,21 @@ const Quiz = () => {
                         <div className='list-group-item'>
                             <GenericQuestion
                                 question={question}
+                                questions={questions}
+                                setQuestions={setQuestions}
                             />
                         </div>
                     )
                 }
+            </div>
+            <div className='d-block'>
+                <button className='btn btn-danger'
+                        onClick={() => {
+                            console.log(questions);
+                            quizzesService.submitQuiz(quizId, questions);
+                        }}>
+                    Submit
+                </button>
             </div>
         </div>
     );

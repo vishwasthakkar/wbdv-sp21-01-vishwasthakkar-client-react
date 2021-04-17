@@ -4,7 +4,7 @@ import MultipleChoice from "./multiple-choice";
 import './choice/choice..style.client.css';
 
 const GenericQuestion = ({
-    question
+    question, setQuestions, questions
 }) => {
     const [answer, setAnswer] = useState('');
     const [isCorrect, setIsCorrect] = useState(0);
@@ -12,6 +12,11 @@ const GenericQuestion = ({
     const handleAnswerChange = (e) => {
         setIsCorrect(0);
         setAnswer(e.target.value);
+
+        const index = questions.findIndex((q => q._id === question._id));
+        questions[index].answer = e.target.value;
+
+        setQuestions([...questions]);
     };
 
     const checkAnswer = () => {

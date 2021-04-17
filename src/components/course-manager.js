@@ -8,6 +8,7 @@ import CourseHeader from "./course-header";
 import CourseEditor from "./course-editor/course-editor";
 import CourseQuizzes from "./course-quizzes"
 import Quiz from "./quiz/quiz";
+import QuizAttemptsList from "./quiz/quiz-attempts-list";
 
 export default class CourseManager
     extends React.Component {
@@ -90,6 +91,7 @@ export default class CourseManager
 
                 <Route path={['/courses/:courseId/quizzes']} component={CourseQuizzes} exact={true}/>
                 <Route path={['/courses/:courseId/quizzes/:quizId']} component={Quiz} exact={true}/>
+                <Route path={['/courses/:courseId/quizzes/:quizId/attempts']} component={QuizAttemptsList} exact={true}/>
             </div>
         )
     }

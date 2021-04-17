@@ -33,8 +33,15 @@ const CourseQuizzes = () => {
 
                         <Link to={`/courses/${courseId}/quizzes/${quiz._id}`}>
                             <button type="button"
-                                    className="btn btn-primary float-right">
+                                    className="btn btn-success float-right">
                                 Start
+                            </button>
+                        </Link>
+
+                        <Link to={`/courses/${courseId}/quizzes/${quiz._id}/attempts`}>
+                            <button type="button"
+                                    className="btn btn-link float-right">
+                                Show Attempts
                             </button>
                         </Link>
 
