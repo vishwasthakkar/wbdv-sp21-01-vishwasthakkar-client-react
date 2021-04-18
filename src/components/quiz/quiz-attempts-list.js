@@ -14,11 +14,13 @@ const QuizAttemptsList = (
     useEffect(() => {
         quizzesService.findAllAttemptsOfQuiz(quizId)
             .then(attempts => {
-                setAttempts(attempts)
-            }).then(setLoading(false));
+                setAttempts(attempts.reverse())
+            });
 
         quizzesService.findQuizById(quizId)
             .then(quiz => setName(quiz.title));
+
+        setLoading(false);
 
     }, [quizId, courseId]);
 
@@ -33,23 +35,24 @@ const QuizAttemptsList = (
             {
                 loading && <h1>Loading ...</h1>
             }
-            <div className='list-group'>
-                {
-                    !loading && attempts.reverse().map((attempt, index) =>
-                                     <div className={`list-group-item ${index === 0 ? 'bg-primary text-white': ''}`}>
-                                         <span className='row'>
-                                             <h5 className='col-6 text-center'>Attempt {attempts.length - index}</h5>
-                                             {
-                                                 index === 0 ?
-                                                 <h1 className='col-6 text-center'>{attempt.score}/100</h1> :
-                                                 <h4 className='col-6 text-center'>{attempt.score}/100</h4>
-                                             }
-
-                                         </span>
-                                     </div>
-                    )
-                }
-            </div>
+            {
+                !loading && <div className='list-group'>
+                    {
+                        attempts.map((attempt, index) =>
+                           <div className={`list-group-item ${index === 0 ? 'bg-primary text-white': ''}`}>
+                             <span className='row'>
+                                 <h5 className='col-6 text-center'>Attempt {attempts.length - index}</h5>
+                                 {
+                                     index === 0 ?
+                                     <h1 className='col-6 text-center'>{attempt.score}/100</h1> :
+                                     <h4 className='col-6 text-center'>{attempt.score}/100</h4>
+                                 }
+                             </span>
+                           </div>
+                        )
+                    }
+                </div>
+            }
         </div>
     );
 };

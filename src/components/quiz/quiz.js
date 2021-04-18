@@ -10,7 +10,9 @@ const Quiz = () => {
     const {quizId, courseId} = useParams();
     const [name, setName] = useState('');
     const [questions, setQuestions] = useState([]);
+    const [submitDisabled, setSubmitDisabled] = useState(false);
     let history = useHistory();
+
 
     useEffect(() => {
 
@@ -49,8 +51,9 @@ const Quiz = () => {
             </div>
             <div className='d-block'>
 
-                <button className='btn btn-danger w-100'
+                <button className='btn btn-danger w-100' disabled={submitDisabled}
                         onClick={() => {
+                            setSubmitDisabled(true);
                             quizzesService.submitQuiz(quizId, questions).then(
                                 res => handleNavigation()
                             );
