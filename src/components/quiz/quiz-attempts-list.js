@@ -12,7 +12,7 @@ const QuizAttemptsList = (
 
     useEffect(() => {
         quizzesService.findAllAttemptsOfQuiz(quizId)
-            .then(attempts => setTimeout(() => setAttempts(attempts), 200));
+            .then(attempts => setTimeout(() => setAttempts(attempts), 400));
 
         quizzesService.findQuizById(quizId)
             .then(quiz => setName(quiz.title));
