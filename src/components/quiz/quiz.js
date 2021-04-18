@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams, useHistory} from 'react-router-dom';
 
 import questionsService from '../../services/questions-service';
 import quizzesService from '../../services/quizzes-service';
@@ -10,6 +10,7 @@ const Quiz = () => {
     const {quizId, courseId} = useParams();
     const [name, setName] = useState('');
     const [questions, setQuestions] = useState([]);
+    let history = useHistory();
 
     useEffect(() => {
 
@@ -20,6 +21,10 @@ const Quiz = () => {
             .then(receivedQuestions => setQuestions(receivedQuestions));
 
     }, [quizId]);
+
+    const handleNavigation = () => {
+        history.push(`/courses/${courseId}/quizzes/${quizId}/attempts`);
+    };
 
     return(
         <div className='container'>
@@ -44,18 +49,14 @@ const Quiz = () => {
             </div>
             <div className='d-block'>
 
-                    <button className='btn btn-danger w-100'
-                            onClick={() => {
-                                quizzesService.submitQuiz(quizId, questions);
-                                setTimeout(
-                                    () => {
-                                        window.location.href=`/courses/${courseId}/quizzes/${quizId}/attempts`;
-                                    },
-                                    500
-                                );
-                            }}>
-                        Submit
-                    </button>
+                <button className='btn btn-danger w-100'
+                        onClick={() => {
+                            quizzesService.submitQuiz(quizId, questions).then(
+                                res => handleNavigation()
+                            );
+                        }}>
+                    Submit
+                </button>
 
             </div>
         </div>

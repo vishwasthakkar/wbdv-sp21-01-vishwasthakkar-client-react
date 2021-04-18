@@ -9,10 +9,13 @@ const QuizAttemptsList = (
     const {quizId, courseId} = useParams();
     const [attempts, setAttempts] = useState([]);
     const [name, setName] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         quizzesService.findAllAttemptsOfQuiz(quizId)
-            .then(attempts => setTimeout(() => setAttempts(attempts), 400));
+            .then(attempts => {
+                setAttempts(attempts)
+            }).then(setLoading(false));
 
         quizzesService.findQuizById(quizId)
             .then(quiz => setName(quiz.title));
@@ -27,9 +30,12 @@ const QuizAttemptsList = (
                 </Link>
                 {name}
             </h2>
+            {
+                loading && <h1>Loading ...</h1>
+            }
             <div className='list-group'>
                 {
-                    attempts.reverse().map((attempt, index) =>
+                    !loading && attempts.reverse().map((attempt, index) =>
                                      <div className={`list-group-item ${index === 0 ? 'bg-primary text-white': ''}`}>
                                          <span className='row'>
                                              <h5 className='col-6 text-center'>Attempt {attempts.length - index}</h5>
